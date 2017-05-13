@@ -1,0 +1,8 @@
+db:
+  host: ''
+  user: 'root'
+  password: ''
+  database: 'blog'
+  encoding: 'utf8'
+
+build: './build'  
