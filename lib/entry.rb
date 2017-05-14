@@ -95,7 +95,7 @@ class Entry < Base
   def build_meta_data
     {
       "title" => title,
-      "date" => "#{year}/#{format('%02d', month)}/#{format('%02d', day)}",
+      "date" => created_on.strftime("%Y/%m/%d %H:%M:%S"),
       "tags" => categories.map(&:base_name).join(', '),
       "published" => true,
     }
