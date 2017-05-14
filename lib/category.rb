@@ -1,10 +1,10 @@
 require 'lib/base'
 
 class Category < Base
-  attr_accessor :label, :basename
+  attr_accessor :label, :base_name
 
-  def initialize(label: , basement:)
+  def initialize(label: , base_name:)
     @label = label
-    @basement = basement
+    @base_name = base_name
   end
 end

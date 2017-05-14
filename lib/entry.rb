@@ -47,7 +47,7 @@ class Entry < Base
       sql = <<~SQL
        select
          c.category_label as label
-         , c.category_basename as basement
+         , c.category_basename as base_name
        from
          mt_entry e
            inner join mt_placement p on e.entry_id = p.placement_entry_id
@@ -58,7 +58,7 @@ class Entry < Base
       Base.client.query(sql).map do |res|
         Category.new(
           label: res['label'],
-          basement: res['basement'],
+          base_name: res['base_name'],
         )
       end
     end
@@ -96,7 +96,7 @@ class Entry < Base
     {
       "title" => title,
       "date" => "#{year}/#{format('%02d', month)}/#{format('%02d', day)}",
-      "categories" => categories.map(&:label).join(', '),
+      "tags" => categories.map(&:base_name).join(', '),
       "published" => true,
     }
   end
